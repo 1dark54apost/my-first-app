@@ -1,0 +1,5 @@
+
+config:
+  env:
+    name: test
+    str: str-test
