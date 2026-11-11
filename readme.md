@@ -2,9 +2,9 @@
 
 好了现在我要记下来一些我觉得常用的远程推送以及本地git仓库提交命令
 
-1）git remote add origin https://github/1dark54apost/my-first-app 绑定现在的远程仓库my-first-app到本地git
+1) git remote add origin https://github/1dark54apost/my-first-app 绑定现在的远程仓库my-first-app到本地git
 
-2）git push -u origin master 第一次推送会出现-u，master是分支名默认的
+2) git push -u origin master 第一次推送会出现-u，master是分支名默认的
 
 3) git branch -M main 将分支名改为main
 
@@ -14,11 +14,11 @@
 
 6) 以下是远程更新流程
 
-7）git pull origin main 先拉取远程仓库
+7) git pull origin main 先拉取远程仓库
 
 8) git add . 添加所有被改动的文件，也可以指定文件
 
-9）git commit -m "提交说明" 提交文件至本地git仓库
+9) git commit -m "提交说明" 提交文件至本地git仓库
 
 10) git push origin main / git push 推送至远程保存
 
