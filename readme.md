@@ -2,7 +2,7 @@
 
 好了现在我要记下来一些我觉得常用的远程推送以及本地git仓库提交命令
 
-1) git remote add origin https://github/1dark54apost/my-first-app 绑定现在的远程仓库my-first-app到本地git
+1) git remote add origin https://github.com/1dark54apost/my-first-app 绑定现在的远程仓库my-first-app到本地git
 
 2) git push -u origin master 第一次推送会出现-u，master是分支名默认的
 
