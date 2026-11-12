@@ -1,3 +1,4 @@
+#数据库配置
 spring:
   datasource:
     # 1. 数据库连接地址
@@ -9,11 +10,32 @@ spring:
     username: root
 
     # 3. 数据库密码（你在安装 MySQL 时自己设置的密码，千万别写错）
-    password: 123456
+    password: 123456    #不应该明文存放,所有密码都不应该明文存放
 
     # 4. 数据库驱动（Spring Boot 2.x 和 3.x 都是这个名字）
     driver-class-name: com.mysql.cj.jdbc.Driver
+#数据库配置
 
+#服务器配置
+server:
+  port: 8080  #启动端口
+  servlet:
+    context-path: /dark   #所有接口前都加个/dark
+#服务器配置
 
+#knife4j配置文件
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+
+springdoc:
+  group-configs:
+    group: 'default'
+    paths-to-match: '/**'
+    package-to-scan: com.dark_apostle.Controller
+#knife4j配置文件
+
+#让mybatis知道要去找xml
 mybatis:  #注意缩进与该项重要性
   mapper-locations: classpath:Mapper/StudentMapper.xml

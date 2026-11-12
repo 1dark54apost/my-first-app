@@ -28,4 +28,8 @@
         (#{id},#{studentID},#{name},#{classID},#{dormID},#{password})
     </insert>
 
+    <select id="getByID" resultType="java.util.List">
+        SELECT * FROM student WHERE id = #{id}
+    </select>
+
 </mapper>

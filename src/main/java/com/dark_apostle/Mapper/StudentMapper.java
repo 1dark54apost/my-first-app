@@ -4,8 +4,13 @@ import com.dark_apostle.Entity.Student;
 import com.dark_apostle.Entity.ThesisAuthor;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 @Mapper
 public interface StudentMapper {
+
+
+    List<Student> getByID(Integer id);
 
     @Options(useGeneratedKeys = true , keyProperty = "id")
     int RegisterStu(Student student);
