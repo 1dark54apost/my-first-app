@@ -3,6 +3,7 @@ package Test;
 
 import com.dark_apostle.Controller.StudentController;
 
+import com.dark_apostle.Entity.ThesisAuthor;
 import com.dark_apostle.Mapper.StudentMapper;
 import com.dark_apostle.MyFirstApp;
 import org.springframework.beans.factory.annotation.Autowired;
