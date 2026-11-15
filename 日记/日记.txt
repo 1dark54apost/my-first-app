@@ -1,0 +1,24 @@
+2026.11.15
+配置好knife4j
+#knife4j配置文件
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+
+springdoc:
+  group-configs:
+    group: 'default'
+    paths-to-match: '/**'
+    package-to-scan: com.dark_apostle.Controller
+#knife4j配置文件
+
+knife4j的常用注解@tag标注类@operation(summary = "")标注方法@parameter(description = "")标注参数
+
+我忘记了一点，spring boot只做后端的时候返回json时送到前端的对象对应的类要有getter不然无法解析成json
+
+在项目里已经写了一个看起来比较完整的返回给前端的统一结构，但是可以看出来我完全不会使用枚举以及不懂枚举的->
+规范，还是要多加学习，对于泛型只停留在讨论理论甚至完全不知道怎么写泛型。
+值得一提的是翻译方法的返回值类型需要有声明比如<T> R<T>
+设计规范也有对统一返回结果的要求比如说不准外部new，提供public方法返回统一结果，还要思考对应的怎么构建->
+这个返回类型的内容，就这些吧我有点懒。

@@ -2,6 +2,8 @@ package com.dark_apostle.Controller;
 
 import com.dark_apostle.Entity.Student;
 import com.dark_apostle.Mapper.StudentMapper;
+import com.dark_apostle.Response.Result;
+import com.dark_apostle.Response.Unity;
 import com.dark_apostle.Service.StudentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -21,8 +23,8 @@ public class StudentController {
     @GetMapping("/lookFor")
     @Operation(summary = "返回符合参数id的学生的集合")//@Operation说明接口
     //@Parameter说明参数
-    public List<Student> lookForStuByID(@Parameter(description = "主键id") @RequestParam Integer id){
-        return service.list(id);
+    public Unity<List<Student>> lookForStuByID(@Parameter(description = "主键id") @RequestParam Integer id){
+        return Unity.success(Result.SUCCESS.getMessage(),service.list(id));
     }
 
 
