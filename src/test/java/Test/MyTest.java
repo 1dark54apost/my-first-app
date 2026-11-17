@@ -25,6 +25,6 @@ public class MyTest {
 
     @org.junit.jupiter.api.Test
     public void test(){
-
+        System.out.println("测试"+mapper.getByNameANDId(1,"小明"));
     }
 }

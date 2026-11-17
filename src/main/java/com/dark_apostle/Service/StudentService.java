@@ -18,5 +18,9 @@ public class StudentService {
         return mapper.getByID(id);
     }
 
+    public List<String> getTitleByName(String name){
+        return mapper.getTitleByName(name);
+    }
+
 
 }

@@ -27,5 +27,10 @@ public class StudentController {
         return Unity.success(Result.SUCCESS.getMessage(),service.list(id));
     }
 
+    @GetMapping("/lookTitle")
+    public Unity<List<String>> lookFortitleByName(@RequestParam String name){
+        return Unity.success(Result.SUCCESS.getMessage(),service.getTitleByName(name));
+    }
+
 
 }
