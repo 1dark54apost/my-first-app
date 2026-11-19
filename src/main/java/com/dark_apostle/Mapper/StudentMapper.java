@@ -37,11 +37,11 @@ public interface StudentMapper {
 
     //根据作者名字，上传的论文编号查数据库
     @Select("SELECT * FROM thesis_database WHERE contentID = #{contentID} AND name = #{name}")
-    ThesisAuthor getByNameANDId(Integer contentID,String name);
+    ThesisAuthor getByNameANDId(String contentID,String name);
 
     //根据作者名字查论文标识
     @Select("SELECT contentID FROM thesis_database WHERE name = #{name}")
-    Integer getContentIDByName(String name);
+    String getContentIDByName(String name);
 
     //根据作者名字查论文标题
     List<String> getTitleByName(String name);
@@ -49,6 +49,13 @@ public interface StudentMapper {
     //标题查对应论文
     List<String> getContentByTitle(String title);
 
-    //写入论文要提供作者和文体
-    int registerContent(ThesisAuthor author,ThesisContent content);
+    //写入论文
+    @Insert("INSERT INTO thesis_context (contentID,content,title,isDelete) VALUES (#{contentID}," +
+            "#{content},#{title},#{isDelete})")
+    @Options(keyProperty = "id",useGeneratedKeys = true)
+    int registerContent(ThesisContent content);
+
+    //写入论文作者，和上面方法组合使用，要求必须是同一篇论文的作者
+    @Options(useGeneratedKeys = true,keyProperty = "id")
+    int registerAuthor(@Param("author") List<ThesisAuthor> authors);
 }

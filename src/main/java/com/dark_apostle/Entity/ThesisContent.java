@@ -12,7 +12,7 @@ public class ThesisContent {
     private Integer id;
 
     //论文标识
-    private Integer contentID;
+    private String contentID;
 
     //论文标题
     private String title;
@@ -22,6 +22,14 @@ public class ThesisContent {
 
     //是否被删除
     private boolean isDelete;
+
+    public ThesisContent(ThesisContentDTO dto,String contentID,boolean isDelete){
+        id = null;
+        this.contentID = contentID;
+        this.isDelete = isDelete;
+        title = dto.getTitle();
+        content = dto.getContent();
+    }
 
 
 }

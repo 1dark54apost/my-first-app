@@ -18,5 +18,12 @@ public class ThesisAuthor {
     private Integer authorOrder;
 
     //论文标识
-    private Integer contentID;
+    private String contentID;
+
+    public ThesisAuthor(ThesisAuthorDTO dto,String contentID){
+        id = null;
+        name = dto.getName();
+        authorOrder = dto.getAuthorOrder();
+        this.contentID = contentID;
+    }
 }

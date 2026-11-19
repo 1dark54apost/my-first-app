@@ -8,10 +8,13 @@ import com.dark_apostle.Entity.ThesisAuthor;
 import com.dark_apostle.Mapper.StudentMapper;
 import com.dark_apostle.MyFirstApp;
 import com.dark_apostle.Service.StudentService;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.Environment;
+
+import java.util.UUID;
 
 @SpringBootTest(classes = MyFirstApp.class)
 public class MyTest {

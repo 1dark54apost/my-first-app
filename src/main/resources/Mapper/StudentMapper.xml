@@ -42,4 +42,11 @@
         SELECT content FROM thesis_context WHERE title = #{title}
     </select>
 
+    <insert id="registerAuthor">
+        INSERT INTO thesis_database (contentID,name,authorOrder) VALUES
+        <foreach collection="author" item="au" open="(" separator="," close=")">
+            (#{au.contentID},#{au.name},#{au.authorOrder})
+        </foreach>
+    </insert>
+
 </mapper>
