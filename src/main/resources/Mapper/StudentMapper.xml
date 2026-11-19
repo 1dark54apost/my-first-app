@@ -38,4 +38,8 @@
         ON context.contentID = author.contentID WHERE author.name = #{name}
     </select>
 
+    <select id="getContentBytitle" resultType="String">
+        SELECT content FROM thesis_context WHERE title = #{title}
+    </select>
+
 </mapper>

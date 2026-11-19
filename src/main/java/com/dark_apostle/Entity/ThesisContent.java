@@ -20,6 +20,8 @@ public class ThesisContent {
     //论文体
     private String content;
 
+    //是否被删除
+    private boolean isDelete;
 
 
 }

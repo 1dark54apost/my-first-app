@@ -2,6 +2,7 @@ package com.dark_apostle.Mapper;
 
 import com.dark_apostle.Entity.Student;
 import com.dark_apostle.Entity.ThesisAuthor;
+import com.dark_apostle.Entity.ThesisContent;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -46,6 +47,8 @@ public interface StudentMapper {
     List<String> getTitleByName(String name);
 
     //标题查对应论文
-    
+    List<String> getContentByTitle(String title);
 
+    //写入论文要提供作者和文体
+    int registerContent(ThesisAuthor author,ThesisContent content);
 }
