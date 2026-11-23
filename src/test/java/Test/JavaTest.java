@@ -9,6 +9,6 @@ public class JavaTest {
 
     @Test
     public void test(){
-        System.out.println(UUID.randomUUID());
+
     }
 }

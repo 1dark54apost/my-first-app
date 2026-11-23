@@ -1,5 +1,9 @@
 #数据库配置
 spring:
+  security:
+    user:
+      name: user
+      password: $2a$10$crSFWzpBPqeJ7GRJbAZvne9mQ0s4DvQnUCXA29H7gjHhWIHS8z7oy
   datasource:
     # 1. 数据库连接地址
     # localhost:3306 是本机端口
@@ -10,11 +14,15 @@ spring:
     username: root
 
     # 3. 数据库密码（你在安装 MySQL 时自己设置的密码，千万别写错）
-    password: 123456    #不应该明文存放,所有密码都不应该明文存放
+    #已经写入系统变量设置好后idea也应该被重启
+    password: ${DB_Password}    #不应该明文存放,所有密码都不应该明文存放
 
     # 4. 数据库驱动（Spring Boot 2.x 和 3.x 都是这个名字）
     driver-class-name: com.mysql.cj.jdbc.Driver
 #数据库配置
+
+
+
 
 #服务器配置
 server:
@@ -35,6 +43,9 @@ springdoc:
     paths-to-match: '/**'
     package-to-scan: com.dark_apostle.Controller
 #knife4j配置文件
+
+pagehelper:
+  reasonable: true
 
 #让mybatis知道要去找xml
 mybatis:  #注意缩进与该项重要性

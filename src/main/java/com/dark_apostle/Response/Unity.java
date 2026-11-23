@@ -38,6 +38,10 @@ public class Unity<T> {
         return new Unity<>(Result.SUCCESS.getCode(),message,data);
     }
 
+    public static <T> Unity<T> success(T data){
+        return new Unity<>(Result.SUCCESS.getCode(),Result.SUCCESS.getMessage(),data);
+    }
+
     public static <T> Unity<T> fail(){
         return new Unity<>(Result.FAIL.getCode(),Result.FAIL.getMessage());
     }
@@ -46,7 +50,8 @@ public class Unity<T> {
         return new Unity<>(Result.FAIL.getCode(),message);
     }
 
-    public static <T> Unity<T> fail(String message,T data){
-        return new Unity<>(Result.FAIL.getCode(),message,data);
+    public static <T> Unity<T> fail(Integer code,String message){
+        return new Unity<>(code,message);
     }
+
 }

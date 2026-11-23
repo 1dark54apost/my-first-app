@@ -35,7 +35,7 @@
     <!-- 巨坑请注意，如果你要返回一个集合数据请把type写成对应数据对象而不是写成一个java.util.list-->
     <select id="getTitleByName" resultType="java.lang.String">
         SELECT context.title FROM thesis_context context JOIN thesis_database author
-        ON context.contentID = author.contentID WHERE author.name = #{name}
+        ON context.contentID = author.contentID WHERE author.name LIKE concat('%',#{name},'%')
     </select>
 
     <select id="getContentBytitle" resultType="String">
@@ -44,7 +44,7 @@
 
     <insert id="registerAuthor">
         INSERT INTO thesis_database (contentID,name,authorOrder) VALUES
-        <foreach collection="author" item="au" open="(" separator="," close=")">
+        <foreach collection="author" item="au" separator="," >
             (#{au.contentID},#{au.name},#{au.authorOrder})
         </foreach>
     </insert>

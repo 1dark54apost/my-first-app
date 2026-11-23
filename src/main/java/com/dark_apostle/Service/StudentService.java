@@ -12,17 +12,14 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @Service
 public class StudentService {
 
     @Autowired
-    private StudentService service;
-
-    @Autowired
     private StudentMapper mapper;
-
 
     public List<Student> list(Integer id){
         return mapper.getByID(id);
@@ -33,14 +30,17 @@ public class StudentService {
     }
 
     //学生注册功能将密码加密后存入数据库
-    public Integer RegisterStu(Student student){
+    public Integer RegisterStu(StudentDTO dto){
         PasswordEncoder encoder = new BCryptPasswordEncoder();
-        student.setPassword(encoder.encode(student.getPassword()));
-        return mapper.RegisterStu(student);
+        Student st = new Student(dto,encoder.encode(dto.getPassword()));
+        return mapper.RegisterStu(st);
     }
 
-    @Transactional
+    @Transactional//注册论文系统
     public int registerThesis(List<ThesisAuthorDTO> authors,ThesisContentDTO contentDTO) throws RuntimeException{
+        if (!checkOrder(authors)){
+            throw new RuntimeException("重复的作者排位！");
+        }
         ThesisContent content = new ThesisContent(contentDTO,strID(),false);
         List<ThesisAuthor> author = new ArrayList<>();
         for (ThesisAuthorDTO dto : authors){
@@ -67,7 +67,15 @@ public class StudentService {
         }else {
             throw new RuntimeException("出错了");
         }
+    }
 
+    private boolean checkOrder(List<ThesisAuthorDTO> dto){
+        for (int i = 1;i<dto.size();i++){
+            if (Objects.equals(dto.get(0).getAuthorOrder(),dto.get(i).getAuthorOrder())){
+                return false;
+            }
+        }
+        return true;
     }
 
     private String strID(){
@@ -83,5 +91,17 @@ public class StudentService {
         } while (str.equals(oldStr));
         return str;
     }
+
+    //用来检查pageSize的方法
+    public Integer parameterCheck(Integer pageSize){
+        if (pageSize > 50){
+            return 50;
+        }else if (pageSize < 10){
+            return 10;
+        }else {
+            return pageSize;
+        }
+    }
+
 
 }

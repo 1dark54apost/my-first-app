@@ -1,6 +1,7 @@
 package Test;
 
 
+import com.dark_apostle.Config.SpringDatasource;
 import com.dark_apostle.Controller.StudentController;
 
 import com.dark_apostle.Entity.Student;
@@ -11,8 +12,11 @@ import com.dark_apostle.Service.StudentService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.Environment;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.UUID;
 
@@ -27,11 +31,14 @@ public class MyTest {
     @Autowired
     private StudentService service;
 
+    @Autowired
+    private SpringDatasource datasource;
+
+    @Value("${spring.datasource.password}")
+    private String password;
 
     @org.junit.jupiter.api.Test
     public void test(){
-        System.out.println("测试"+service.RegisterStu(new Student(null,"小美",310101,23213
-                ,"1","password")));
-        System.out.println("测试"+mapper.getByID(1));
+        System.out.println(datasource.getDriverClassName());
     }
 }

@@ -25,4 +25,13 @@ public class Student {
 
     //密码
     private String password;
+
+    public Student(StudentDTO dto,String password){
+        name = dto.getName();
+        studentID = dto.getStudentID();
+        classID = dto.getClassID();
+        dormID = dto.getDormID();
+        this.password = password;
+    }
+
 }
